@@ -25,10 +25,10 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                             aria-current="page" href="{{ route('home') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('/about') ? 'active' : '' }}"
-                            href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('/contact') ? 'active' : '' }}"
-                            href="#!">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
+                            href="{{ route('contact') }}">Contact</a></li>
                 </ul>
             </div>
         </div>
