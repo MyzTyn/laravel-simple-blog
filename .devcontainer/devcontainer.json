@@ -1,0 +1,9 @@
+{
+  "name": "Laravel",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "root",
+  "workspaceFolder": "/var/www/html",
+  "workspaceMount": "source=${localWorkspaceFolder}/blog-app,target=/var/www/html,type=bind"
+}
