@@ -24,7 +24,8 @@
                     <div class="card-body">
                         <div class="small text-muted">{{ $posts->first()->created_at->format('F j, Y') }}</div>
                         <h2 class="card-title">{{ $posts->first()->title }}</h2>
-                        <p class="card-text">{{ Str::limit($posts->first()->content, 100) }}</p>
+                        <p class="card-text">
+                            {{ Str::limit(strip_tags(Illuminate\Mail\Markdown::parse($posts->first()->content)), 100) }}</p>
                         <a class="btn btn-primary" href="{{ route('post.show', $posts->first()) }}">Read more →</a>
                     </div>
                 </div>
@@ -39,7 +40,9 @@
                                 <div class="card-body">
                                     <div class="small text-muted">{{ $post->created_at->format('F j, Y') }}</div>
                                     <h2 class="card-title h4">{{ $post->title }}</h2>
-                                    <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
+                                    <p class="card-text">
+                                        {{ Str::limit(strip_tags(Illuminate\Mail\Markdown::parse($post->content)), 100) }}
+                                    </p>
                                     <a class="btn btn-primary" href="{{ route('post.show', $post) }}">Read more →</a>
                                 </div>
                             </div>

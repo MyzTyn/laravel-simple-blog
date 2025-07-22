@@ -18,7 +18,29 @@ class BlogEntryFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
-            'content' => fake()->paragraph(3, true),
+            'content' => $this->generateMarkdown(),
         ];
+    }
+
+    private function generateMarkdown(): string
+    {
+        return implode("\n\n", [
+            '# ' . fake()->sentence(),
+
+            fake()->paragraph(),
+
+            '## ' . fake()->sentence(),
+
+            '- ' . fake()->sentence(),
+            '- ' . fake()->sentence(),
+            '- ' . fake()->sentence(),
+
+            '### ' . fake()->sentence(),
+
+            fake()->paragraph(),
+            '**' . fake()->word() . '** is very important. Also, *' . fake()->word() . '* is useful.',
+
+            '[Learn more](https://example.com)',
+        ]);
     }
 }
