@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            // $table->foreignIdFor(Category::class, 'category')->array();
             $table->timestamps();
         });
     }

@@ -14,6 +14,11 @@ class Category extends Model
         'name'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function blogEntries()
     {
         return $this->belongsToMany(BlogEntry::class, 'blog_entry_category');
