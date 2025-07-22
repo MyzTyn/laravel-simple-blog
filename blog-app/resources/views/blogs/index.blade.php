@@ -3,15 +3,27 @@
 @section('title', $title)
 
 @section('content')
-    <!-- Page header with logo and tagline-->
-    <header class="py-5 bg-light border-bottom mb-4">
-        <div class="container">
-            <div class="text-center my-5">
-                <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+    @if (request()->is('/'))
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
+    @elseif(isset($category))
+        <!-- Category header -->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">{{ $category->name }}</h1>
+                    <p class="lead mb-0">Posts in category: {{ $category->name }}</p>
+                </div>
+            </div>
+        </header>
+    @endif
     <div class="container">
         {{-- TODO: Add error page if the posts are empty --}}
         <div class="row">
@@ -76,7 +88,8 @@
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                         @foreach ($chunk as $category)
-                                            <li><a href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
+                                            <li><a
+                                                    href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

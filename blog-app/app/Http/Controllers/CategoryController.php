@@ -12,6 +12,7 @@ class CategoryController extends Controller
         $posts = $category->blogEntries()->latest()->paginate(5);
         return view('blogs.index', [
             'posts' => $posts,
+            'category' => $category,
             'categories' => Category::all(),
             'title' => $category->name,
         ]);
