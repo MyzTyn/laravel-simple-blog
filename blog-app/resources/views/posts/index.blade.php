@@ -12,12 +12,18 @@
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+                        <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
+                        {{-- <div class="text-muted fst-italic mb-2">Posted on {{ $post->created_at->format('F j, Y') }} by
+                            {{ $post->author->name }}</div> --}}
+                        <div class="text-muted fst-italic mb-2">Posted on {{ $post->created_at->format('F j, Y') }}</div>
                         <!-- Post categories-->
-                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                        @foreach ($post->categories as $category)
+                            <a class="badge bg-secondary text-decoration-none link-light"
+                                href="#!">{{ $category->name }}</a>
+                        @endforeach
+                        {{-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> --}}
                     </header>
                     <!-- Preview image figure-->
                     <figure class="mb-4"><img class="img-fluid rounded"
@@ -42,6 +48,7 @@
                             once had running water. It's bone dry today. Something bad happened there as well.</p>
                     </section>
                 </article>
+
                 <!-- Comments section-->
                 <section class="mb-5">
                     <div class="card bg-light">
@@ -113,20 +120,16 @@
                     <div class="card-header">Categories</div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">Web Design</a></li>
-                                    <li><a href="#!">HTML</a></li>
-                                    <li><a href="#!">Freebies</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">JavaScript</a></li>
-                                    <li><a href="#!">CSS</a></li>
-                                    <li><a href="#!">Tutorials</a></li>
-                                </ul>
-                            </div>
+                            @foreach (collect($categories)->chunk(ceil(count($categories) / 2)) as $chunk)
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach ($chunk as $category)
+                                            <li><a href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
