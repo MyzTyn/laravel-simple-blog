@@ -14,9 +14,9 @@
                         <!-- Post title-->
                         <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
                         <!-- Post meta content-->
-                        {{-- <div class="text-muted fst-italic mb-2">Posted on {{ $post->created_at->format('F j, Y') }} by
-                            {{ $post->author->name }}</div> --}}
-                        <div class="text-muted fst-italic mb-2">Posted on {{ $post->created_at->format('F j, Y') }}</div>
+                        <div class="text-muted fst-italic mb-2">Posted on {{ $post->created_at->format('F j, Y') }} by
+                            {{ $post->author }}</div>
+                        {{-- <div class="text-muted fst-italic mb-2">Posted on {{ $post->created_at->format('F j, Y') }}</div> --}}
                         <!-- Post categories-->
                         @foreach ($post->categories as $category)
                             <a class="badge bg-secondary text-decoration-none link-light"

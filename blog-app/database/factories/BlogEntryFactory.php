@@ -18,6 +18,7 @@ class BlogEntryFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
+            'author' => fake()->name(),
             'content' => $this->generateMarkdown(),
         ];
     }

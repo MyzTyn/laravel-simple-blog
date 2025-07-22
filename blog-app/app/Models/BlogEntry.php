@@ -12,7 +12,8 @@ class BlogEntry extends Model
 
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'author',
     ];
 
     public function categories()
