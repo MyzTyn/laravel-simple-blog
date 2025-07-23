@@ -34,8 +34,8 @@ class ArticleRequest extends FormRequest
     {
         $data = $this->all();
         $data['title'] = strip_tags($data['title'] ?? '');
-        $data['content'] = strip_tags($data['content'] ?? '');
-        $data['author'] = strip_tags($data['author'] ?? '');
+        // Allow markdown to have html tags?!
+        // $data['content'] = strip_tags($data['content'] ?? '');
         $data['author'] = strip_tags($data['author'] ?? '');
         $data['image_link'] = strip_tags($data['image_link'] ?? '');
 
