@@ -25,6 +25,7 @@ class ArticleRequest extends FormRequest
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'author' => 'required|string|max:255',
+            'image_link' => 'nullable|url',
             'categories' => 'array',
         ];
     }
@@ -35,6 +36,9 @@ class ArticleRequest extends FormRequest
         $data['title'] = strip_tags($data['title'] ?? '');
         $data['content'] = strip_tags($data['content'] ?? '');
         $data['author'] = strip_tags($data['author'] ?? '');
+        $data['author'] = strip_tags($data['author'] ?? '');
+        $data['image_link'] = strip_tags($data['image_link'] ?? '');
+
         return $data;
     }
 }

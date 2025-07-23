@@ -23,8 +23,11 @@
                         @endforeach
                     </header>
                     <!-- Preview image figure-->
-                    <figure class="mb-4"><img class="img-fluid rounded"
-                            src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                    @if ($post->image_link)
+                        <figure class="mb-4">
+                            <img class="img-fluid rounded" src="{{ $post->image_link }}" alt="{{ $post->title }}" />
+                        </figure>
+                    @endif
                     <!-- Post content-->
                     <section class="mb-5">
                         {{-- Parse Markdown to HTML --}}

@@ -23,6 +23,13 @@
                             <input type="text" class="form-control" id="author" name="author"
                                 value="{{ old('author', $post->author ?? '') }}" required>
                         </div>
+                        {{-- Image Link --}}
+                        <div class="mb-3">
+                            <label for="image_link" class="form-label">Image Link (Optional)</label>
+                            <input type="url" class="form-control" id="image_link" name="image_link"
+                                value="{{ old('image_link', $post->image_link ?? '') }}">
+                            <div class="form-text">Provide a URL for the post image.</div>
+                        </div>
                         {{-- Categories --}}
                         <div class="mb-3">
                             <label for="categories" class="form-label">Categories</label>

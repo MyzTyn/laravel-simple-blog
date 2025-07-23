@@ -20,6 +20,9 @@ class BlogEntryFactory extends Factory
             'title' => fake()->sentence(),
             'author' => fake()->name(),
             'content' => $this->generateMarkdown(),
+            'image_link' => fake()->boolean(50) // 80% chance to have an image
+                ? 'https://dummyimage.com/850x350/dee2e6/6c757d.jpg' . urlencode(fake()->word())
+                : null,
         ];
     }
 

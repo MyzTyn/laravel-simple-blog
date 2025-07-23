@@ -15,6 +15,7 @@ class BlogEntry extends Model
         'title',
         'content',
         'author',
+        'image_link',
     ];
 
     // Define the relationship with the Category model

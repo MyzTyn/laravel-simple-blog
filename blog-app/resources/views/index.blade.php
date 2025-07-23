@@ -31,8 +31,10 @@
             <div class="col-lg-8">
                 <!-- Featured blog post-->
                 <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-                            alt="..." /></a>
+                    @if ($posts->first()->image_link)
+                        <a href="#!"><img class="card-img-top" src="{{ $posts->first()->image_link }}"
+                                alt="{{ $posts->first()->title }}" /></a>
+                    @endif
                     <div class="card-body">
                         <div class="small text-muted">{{ $posts->first()->created_at->format('F j, Y') }}</div>
                         <h2 class="card-title">{{ $posts->first()->title }}</h2>
@@ -47,8 +49,10 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top"
-                                        src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                @if ($post->image_link)
+                                    <a href="#!"><img class="card-img-top" src="{{ $post->image_link }}"
+                                            alt="{{ $post->title }}" /></a>
+                                @endif
                                 <div class="card-body">
                                     <div class="small text-muted">{{ $post->created_at->format('F j, Y') }}</div>
                                     <h2 class="card-title h4">{{ $post->title }}</h2>
