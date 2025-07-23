@@ -14,17 +14,6 @@ class ArticleController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function show(BlogEntry $post)
-    {
-        $categories = Category::all();
-
-        return view('posts.show', [
-            'post' => $post,
-            'categories' => $categories,
-        ]);
-    }
-
-    // CRUD operations
     public function create()
     {
         $categories = Category::all();
@@ -45,6 +34,16 @@ class ArticleController extends Controller
         }
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+    }
+
+    public function show(BlogEntry $post)
+    {
+        $categories = Category::all();
+
+        return view('posts.show', [
+            'post' => $post,
+            'categories' => $categories,
+        ]);
     }
 
     public function edit(BlogEntry $post)
