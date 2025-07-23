@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\BlogEntry;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ArticleController extends Controller
 {
     public function index()
     {
@@ -34,19 +34,15 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'author' => 'required|string|max:255',
-            'categories' => 'array',
-        ]);
+        $data = $request->validated();
 
         $blog = BlogEntry::create($data);
-        Category::find($data['categories'])->each(function ($category) use ($blog) {
-            $category->blogEntries()->attach($blog->id);
-        });
+
+        if (!empty($data['categories'])) {
+            $blog->categories()->sync($data['categories']);
+        }
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
@@ -61,15 +57,17 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, BlogEntry $post)
+    public function update(ArticleRequest $request, BlogEntry $post)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'categories' => 'array',
-        ]);
+        $data = $request->validated();
 
         $post->update($data);
+
+        if (!empty($data['categories'])) {
+            $post->categories()->sync($data['categories']);
+        } else {
+            $post->categories()->sync([]);
+        }
 
         return redirect()->route('posts.show', $post)->with('success', 'Post updated successfully.');
     }

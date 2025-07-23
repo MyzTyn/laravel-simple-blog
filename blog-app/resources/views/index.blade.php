@@ -89,7 +89,7 @@
                                     <ul class="list-unstyled mb-0">
                                         @foreach ($chunk as $category)
                                             <li><a
-                                                    href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
+                                                    href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

@@ -17,6 +17,7 @@ class BlogEntry extends Model
         'author',
     ];
 
+    // Define the relationship with the Category model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'blog_entry_category');

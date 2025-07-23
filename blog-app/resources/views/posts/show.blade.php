@@ -19,7 +19,7 @@
                         <!-- Post categories-->
                         @foreach ($post->categories as $category)
                             <a class="badge bg-secondary text-decoration-none link-light"
-                                href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
+                                href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
                         @endforeach
                     </header>
                     <!-- Preview image figure-->
@@ -108,7 +108,8 @@
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                         @foreach ($chunk as $category)
-                                            <li><a href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
+                                            <li><a
+                                                    href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

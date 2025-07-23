@@ -30,6 +30,10 @@
                         <a class="nav-link {{ request()->is('posts') || request()->is('posts/create') || request()->is('posts/*/edit') ? 'active' : '' }}"
                             aria-current="page" href="{{ route('posts.index') }}">CRUD Posts</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('categories') || request()->is('categories/create') || request()->is('categories/*/edit') ? 'active' : '' }}"
+                            aria-current="page" href="{{ route('categories.index') }}">CRUD Categories</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
                             href="{{ route('about') }}">About</a>
                     </li>
@@ -42,12 +46,27 @@
     </nav>
 
     <!-- Page content-->
-    <main class="flex-grow-1">
+    <main class="d-flex flex-column flex-grow-1">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    {{ $error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endforeach
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         @yield('content')
     </main>
 
     <!-- Footer-->
-    <footer class="py-5 bg-dark mt-auto">
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Blog Website 2023</p>
         </div>

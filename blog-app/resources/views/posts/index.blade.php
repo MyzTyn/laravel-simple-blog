@@ -12,6 +12,7 @@
         </div>
     </header>
     {{-- Simple Table for all posts (For CRUD Operations) --}}
+    {{-- ToDo: Fix the table (Fit the content) --}}
     <div class="container-fluid">
         <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Create New Post</a>
 
@@ -22,6 +23,8 @@
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Author</th>
+                        <th>Categories</th>
                         <th>Content</th>
                         <th>Actions</th>
                     </tr>
@@ -30,7 +33,17 @@
                     @foreach ($posts as $post)
                         <tr>
                             <td>{{ $post->title }}</td>
-                            <td>{{ Str::limit($post->strip_content(), 100) }}</td>
+                            <td>{{ $post->author }}</td>
+                            <td>
+                                @if ($post->categories->isEmpty())
+                                    <span class="text-muted">N/A</span>
+                                @else
+                                    @foreach ($post->categories as $category)
+                                        <span class="badge bg-secondary">{{ $category->name }}</span>
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>{{ Str::limit($post->strip_content(), 50) }}</td>
                             <td>
                                 <a href="{{ route('posts.show', $post->id) }}" class="btn btn-info btn-sm">View</a>
                                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">Edit</a>
