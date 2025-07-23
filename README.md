@@ -26,11 +26,12 @@ HTML Template Used:
 ## Getting Started
 
 1. Clone the repository.
-2. Install dependencies with `composer install`.
-3. Copy `.env.example` to `.env` and configure your environment.
-4. Generate key: `php artisan key:generate`
-5. Run migrations: `php artisan migrate:fresh --seed`
-6. Start the development server: `php artisan serve`
+2. Go to blog-app `cd blog-app`
+3. Install dependencies with `composer install`.
+4. Copy `.env.example` to `.env` and configure your environment.
+5. Generate key: `php artisan key:generate`
+6. Run migrations: `php artisan migrate:fresh --seed`
+7. Start the development server: `php artisan serve`
 
 ## Documentation
 
