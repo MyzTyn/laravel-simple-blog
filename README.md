@@ -19,6 +19,10 @@ Features include:
 - Validation and error handling
 - Example factory and seeder usage
 
+HTML Template Used:
+- [Free Bootstrap 5 Blog Template](https://startbootstrap.com/template/blog-home)
+- [Free Bootstrap 5 Blog Starter Template](https://startbootstrap.com/template/blog-post)
+
 ## Getting Started
 
 1. Clone the repository.
