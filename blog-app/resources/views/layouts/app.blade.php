@@ -68,7 +68,7 @@
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Blog Website 2023</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Blog Website {{ date('Y') }}</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->
