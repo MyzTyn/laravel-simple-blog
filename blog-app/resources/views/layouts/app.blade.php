@@ -13,7 +13,7 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -24,21 +24,30 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
-                            aria-current="page" href="{{ route('home') }}">Home</a></li>
+                            aria-current="page" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('posts') || request()->is('posts/create') || request()->is('posts/*/edit') ? 'active' : '' }}"
+                            aria-current="page" href="{{ route('posts.index') }}">CRUD Posts</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
-                            href="{{ route('about') }}">About</a></li>
+                            href="{{ route('about') }}">About</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
-                            href="{{ route('contact') }}">Contact</a></li>
+                            href="{{ route('contact') }}">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Page content-->
-    @yield('content')
+    <main class="flex-grow-1">
+        @yield('content')
+    </main>
 
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark mt-auto">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Blog Website 2023</p>
         </div>

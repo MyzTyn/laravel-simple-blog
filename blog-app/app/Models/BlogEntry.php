@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Mail\Markdown;
 
 class BlogEntry extends Model
 {
@@ -19,5 +20,19 @@ class BlogEntry extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'blog_entry_category');
+    }
+
+    // Strip the content markdown
+    public function strip_content()
+    {
+        return strip_tags(
+            $this->parse_content()
+        );
+    }
+
+    // Parse the content markdown
+    public function parse_content()
+    {
+        return Markdown::parse($this->content);
     }
 }
