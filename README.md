@@ -9,6 +9,8 @@
 
 ## About This Project
 
+[![Demo](https://github.com/MyzTyn/laravel-simple-blog/raw/refs/heads/main/demo/simple%20blog%20website.mp4)](https://github.com/MyzTyn/laravel-simple-blog/raw/refs/heads/main/demo/simple%20blog%20website.mp4)
+
 It demonstrates a simple blog application with CRUD functionality for posts and categories, using Blade templates and Bootstrap for styling.
 
 Features include:
