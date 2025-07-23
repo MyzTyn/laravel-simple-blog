@@ -10,8 +10,8 @@
             </div>
         </div>
     </header>
-    <div class="container flex-column flex-grow-1">
-        <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Create New Category</a>
+    <div class="container d-flex flex-column flex-grow-1">
+        <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3 mr-auto">Create New Category</a>
 
         @if ($categories->isEmpty())
             <div class="alert alert-info">No categories available.</div>
@@ -32,7 +32,7 @@
                     </li>
                 @endforeach
             </ul>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center mt-auto">
                 {{ $categories->links() }}
             </div>
         @endif

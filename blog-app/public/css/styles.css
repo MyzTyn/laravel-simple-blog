@@ -7520,6 +7520,10 @@ textarea.form-control-lg {
   margin: auto !important;
 }
 
+.mr-auto {
+  margin-right: auto !important;
+}
+
 .mx-0 {
   margin-right: 0 !important;
   margin-left: 0 !important;

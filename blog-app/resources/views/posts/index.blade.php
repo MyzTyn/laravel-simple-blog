@@ -13,8 +13,8 @@
     </header>
     {{-- Simple Table for all posts (For CRUD Operations) --}}
     {{-- ToDo: Fix the table (Fit the content) --}}
-    <div class="container-fluid">
-        <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Create New Post</a>
+    <div class="container-fluid d-flex flex-column flex-grow-1">
+        <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3 mr-auto">Create New Post</a>
 
         @if ($posts->isEmpty())
             <div class="alert alert-info">No posts available.</div>
@@ -59,7 +59,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center mt-auto">
                 {{ $posts->links() }}
             </div>
         @endif
